@@ -12,6 +12,7 @@ const courseSchema = new mongoose.Schema({
         ref:"User",
         required:true,
     },
+
     whatYouWillLearn: {
         type:String,
     },
@@ -30,4 +31,4 @@ const courseSchema = new mongoose.Schema({
     }]
 });
 
-module.exports = mongoose.model("Course", courseSchema);
+module.exports = mongoose.model("Classroom", courseSchema);
