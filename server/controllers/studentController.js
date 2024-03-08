@@ -24,17 +24,11 @@ const registerStudent = asyncHandler(async (req,res)=>
 
     //res.json({message: "Register the user"});
 
-    try{ const recentOtp = await OTP.find({email}).sort({createdAt:-1}).limit(1);
-    console.log(recentOtp);
-    if(recentOtp!==otp){
-        throw new Error("OTP is Incorrect");
-    }
-   }
-   catch(err){
-    res.status(404).json(err);
-
-   }
-    
+     const recentOtp = await OTP.find({email}).sort({createdAt:-1}).limit(1);
+     console.log(recentOtp); 
+    if(recentOtp!==otp){ 
+        throw new Error("OTP is Incorrect"); }  
+ 
    
     const newUser = new User({
         firstName,
@@ -56,7 +50,7 @@ catch(err){
 }
 });
 
-const loginStdent = async (req, res) => {
+const loginStudent = async (req, res) => {
     try {
         //get data from req body
         const {email, password} = req.body;
@@ -130,4 +124,4 @@ const changePassword = async (req, res) => {
     //send mail - Password updated
     //return response
 }
-module.exports={registerStudent,loginStdent,changePassword};
+module.exports={registerStudent,loginStudent,changePassword};
