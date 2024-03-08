@@ -21,7 +21,8 @@ const port=process.env.PORT || 5001;
 app.use(express.json());
 
 //app.use ("/api/contacts",require("./routes/contactRoute"));
-app.use ("/SmartLab/users",require("./routes/StudentRoute"));
+app.use ("/SmartLab/users",require("./routes/studentRoutes"));
+app.use ("/SmartLab/teachers",require("./routes/teacherRoutes"));
 
 
 app.use(errorHandler); 

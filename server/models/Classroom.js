@@ -10,7 +10,7 @@ const courseSchema = new mongoose.Schema({
     instructor: {
         type:mongoose.Schema.Types.ObjectId,
         ref:"User",
-        required:true,
+    
     },
 
     whatYouWillLearn: {
@@ -23,6 +23,9 @@ const courseSchema = new mongoose.Schema({
         required:true,
         ref:"User",
     }]
+},
+{
+    timestamps:true,
 });
 
 module.exports = mongoose.model("Classroom", courseSchema);
