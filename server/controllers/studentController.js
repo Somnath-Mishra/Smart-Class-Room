@@ -3,7 +3,7 @@ const User = require ("../models/User");
 const jwt = require("jsonwebtoken");
 const asyncHandler=require('express-async-handler');
 const OTP=require('../models/OTP')
-const registerStudent = asyncHandler(async (req,res)=>
+const registerUser = asyncHandler(async (req,res)=>
 {
     const { firstName ,lastName,email,password,accountType,otp}=req.body;
 
@@ -50,7 +50,7 @@ catch(err){
 }
 });
 
-const loginStudent = async (req, res) => {
+const loginUser = async (req, res) => {
     try {
         //get data from req body
         const {email, password} = req.body;
@@ -124,4 +124,4 @@ const changePassword = async (req, res) => {
     //send mail - Password updated
     //return response
 }
-module.exports={registerStudent,loginStudent,changePassword};
+module.exports={registerUser,loginUser,changePassword};
