@@ -6,7 +6,7 @@ const User = require("../models/User");
 const auth = async (req, res, next) => {
     try{
         //extract token
-      const token = req.header("Authorization").replace("Bearer ", "");
+      const token = req.body.token||req.header("Authorization").replace("Bearer ", "");
       //const token=req.body.token 
         //if token missing, then return response
         if(!token) {
