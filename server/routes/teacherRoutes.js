@@ -2,6 +2,7 @@
 const express = require("express")
 const router = express.Router()
 
+ const upload=require('../middleware/multerMiddlware')
 // Import the Controllers
 
 // Classroom Controllers Import
@@ -21,7 +22,7 @@ const { auth, isTeacher, isStudent, isAdmin } = require("../middleware/authMiddl
 
 // Courses can Only be Created by Instructors
 router.post("/createClass", auth, isTeacher, createClass)
-router.post("/create-assignment",auth,isTeacher,createAssignment)
+router.post("/create-assignment",auth,isTeacher,upload.single('Document'),createAssignment)
 
 
 

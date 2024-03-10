@@ -5,7 +5,7 @@ const asyncHandler=require('express-async-handler');
 const OTP=require('../models/OTP')
 const registerUser = asyncHandler(async (req,res)=>
 {
-    const { firstName ,lastName,email,password,accountType,otp}=req.body;
+    const { firstName ,lastName,email,password,accountType}=req.body;
 
     if(!firstName || !email || !password){
         res.status(400);
@@ -24,10 +24,7 @@ const registerUser = asyncHandler(async (req,res)=>
 
     //res.json({message: "Register the user"});
 
-     const recentOtp = await OTP.find({email}).sort({createdAt:-1}).limit(1);
-     console.log(recentOtp); 
-    if(recentOtp!==otp){ 
-        throw new Error("OTP is Incorrect"); }  
+   
  
    
     const newUser = new User({
@@ -79,7 +76,7 @@ const loginUser = async (req, res) => {
                 accountType:user.accountType,
             }
             const token = jwt.sign(payload, process.env.JWT_SECRET, {
-                expiresIn:"2h",
+                expiresIn:"10h",
             });
             user.token = token;
             user.password= undefined;

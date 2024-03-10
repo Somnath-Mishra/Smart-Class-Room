@@ -1,8 +1,8 @@
 const Assignment = require("../models/Assignment");
 const Classroom = require("../models/Classroom");
-
+const {uploadOnCloudinary}=require('../utils/cloudinary')
 const User = require("../models/User");
-
+//const upload = require('../middleware/multerMiddlware')
 
 //createCourse handler function
 const createAssignment = async (req, res) => {
@@ -30,9 +30,15 @@ const createAssignment = async (req, res) => {
                 message:'Instructor Details not found',
             });
         }
-
+           console.log(req.file)
         
-       // const thumbnailImage = await uploadImageToCloudinary(thumbnail, process.env.FOLDER_NAME);
+        try {const document = await uploadOnCloudinary(Document);
+        console.log(document)
+        }
+        catch(err){
+            console.log(err);
+        }
+        //const response = JSON.stringify(document.url);
 
         //create an entry for new Course
         const newAssignment = await Assignment.create({
