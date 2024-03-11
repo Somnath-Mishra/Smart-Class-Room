@@ -21,21 +21,13 @@ app.use(bodyParser.urlencoded({extended:true}));
 app.use(express.static(path.resolve(__dirname,'public')));
 
 const port=process.env.PORT || 5001;
-//app.get("/api/contacts",(req,res)=>{
 
-  //  res.status(200).json({message:"Get all contacts"});
-//})
-
-//making routes separately
-
-
-//this is express built in middleware
 app.use(express.json());
 
 
 cloudinaryConnect();
 
-//app.use ("/api/contacts",require("./routes/contactRoute"));
+
 app.use ("/SmartLab/users",require("./routes/auth"));
 app.use ("/SmartLab/teachers",require("./routes/teacherRoutes"));
 

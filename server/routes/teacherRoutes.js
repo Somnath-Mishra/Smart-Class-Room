@@ -8,6 +8,7 @@ const router = express.Router()
 // Classroom Controllers Import
 const {
   createClass,
+  addStudent,
   showAllClasses,
   getClassDetails
 } = require("../Controllers/classRoomController")
@@ -22,7 +23,8 @@ const { auth, isTeacher, isStudent, isAdmin } = require("../middleware/authMiddl
 
 // Courses can Only be Created by Instructors
 router.post("/createClass", auth, isTeacher, createClass)
-router.post("/create-assignment",auth,isTeacher,upload.single('Document'),createAssignment)
+router.post("/create-assignment",auth,isTeacher,upload.single('file'),createAssignment)
+router.post("/addStudent",auth,isTeacher,addStudent);
 
 
 

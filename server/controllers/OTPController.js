@@ -26,12 +26,12 @@ const sendOTP = async (req, res) => {
       });
       result = await OTP.findOne({ otp: otp });
     }
-    const otpPayload = { email, otp };
+    const otpPayload = { email, otp ,createdAt:Date.now()};
     const otpBody = await OTP.create(otpPayload);
     res.status(200).json({
       success: true,
       message: 'OTP sent successfully',
-      otp,
+      otpBody,
     });
   } catch (error) {
     console.log(error.message);
