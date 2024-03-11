@@ -76,6 +76,84 @@ const createClass = async (req, res) => {
     }
 };
 
+const addStudent=async(req,res)=>{
+
+
+    try {
+
+        //fetch data 
+        const {email , classId,token} = req.body;
+
+        
+        //validation
+        if(!email ) {
+            return res.status(400).json({
+                success:false,
+                message:'email field is required',
+            });
+        }
+
+        const userId = req.user.id;
+        const classRoomDetails = await Classroom.findById(classId);
+        console.log("Instructor Details: " ,classRoomDetails.instructor);
+       
+
+        if(classRoomDetails.instructor!=userId ) {
+            return res.status(404).json({
+                success:false,
+                message:'Instructor Details not found',
+            });
+        }
+      const findStudent = await User.findOne({email:email}).exec();
+        
+      console.log("Student id : ",findStudent._id)
+ 
+      
+    
+   
+        //add the new course to the user schema of Instructor
+        await Classroom.findByIdAndUpdate(
+            {_id: classId},
+            {
+                $push: {
+                    studentsEnrolled: findStudent._id,
+                }
+            },
+            {new:true}
+           
+        );
+        
+        await User.findByIdAndUpdate(
+            {_id: findStudent._id},
+            {
+                $push: {
+                    courses: classId,
+                }
+            },
+            {new:true}
+           
+        );
+        
+
+        //return response
+        return res.status(200).json({
+            success:true,
+            message:"Student Added Successfully",
+            
+        });
+
+    }
+    catch(error) {
+        console.error(error);
+        return res.status(500).json({
+            success:false,
+            message:'Failed to create Course',
+            error: error.message,
+        })
+    }
+ 
+}
+
 
 
 
@@ -137,4 +215,4 @@ const getClassDetails = async (req, res) => {
     }
 }
 
-module.exports={createClass,showAllClasses,getClassDetails}
+module.exports={createClass,addStudent,showAllClasses,getClassDetails}

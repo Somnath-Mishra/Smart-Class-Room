@@ -30,9 +30,17 @@ const createAssignment = async (req, res) => {
                 message:'Instructor Details not found',
             });
         }
-           console.log(req.file)
+           console.log(req.Files)
+           const files = req.Files.file
         
-        try {const document = await uploadOnCloudinary(Document);
+           if(!files){
+            return res.status(404).json({
+                success:false,
+                message:'file not found',
+            });
+
+           }
+        try {const document = await uploadOnCloudinary(files);
         console.log(document)
         }
         catch(err){

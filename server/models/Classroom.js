@@ -16,11 +16,8 @@ const courseSchema = new mongoose.Schema({
     whatYouWillLearn: {
         type:String,
     },
-
-
-    studentsEnrolled: [{
+     studentsEnrolled: [{
         type:mongoose.Schema.Types.ObjectId,
-        
         ref:"User",
     }]
     ,

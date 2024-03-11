@@ -83,7 +83,6 @@ const Register = () => {
             <input type="password" className="text" placeholder="password" />
             <input type="text" className="text" placeholder="AccountType" />
 
-
             <button>Sign up</button>
 
             {err && <span>Something went Wrong</span>}
@@ -95,7 +94,8 @@ const Register = () => {
 
 
       </div>
-    </>
+    </>           
+
   )
 
 }
