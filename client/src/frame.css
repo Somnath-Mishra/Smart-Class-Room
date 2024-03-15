@@ -68,8 +68,6 @@
     padding: 5px 25px;
 }
 
-
-
 #sidebarWraper{
     /* padding: 0 20px 20px 20px; */
     height: 100vh;
@@ -99,6 +97,14 @@
     align-items: flex-start;
 }
 
+
+#options .links{
+    width: 100%;
+    border-radius: 10px;
+    padding-left: 15px;
+    padding-top: 5px;
+}
+
 .route{
     display: flex;
     align-items: center;
@@ -108,9 +114,6 @@
     font-size: 35px;
     margin-right: 20px;
 }
-
-/* .route h2{
-} */
 
 #mainBody{
     border: none;
@@ -125,4 +128,71 @@
     box-shadow: 0 0 15px 1px rgb(184, 184, 184);
     display: flex;
     flex-direction: column;
+}
+
+
+@media (width <= 1150px) {
+
+    #topbarWraper{
+        height: 90px;
+        padding: 10px;
+    }
+    
+    #topbar{
+        z-index: 999;
+        height: 60px;
+    }
+
+    #sidebarWraper{
+        height: 100vh;
+        width: 80px;
+    }
+    
+    #sidebar{
+        z-index: 99;
+        margin: 20px 10px;
+        width: 50px;
+        position: absolute;
+        top: 150px;
+    }
+    
+    #options{
+        margin: 15px 5px;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    
+    #options .links{
+        width: 100%;
+        border-radius: 10px;
+        /* padding-left: 0px;
+        padding-top: 0px; */
+        padding: 0;
+    }
+    
+    .route{
+        display: flex;
+        align-items: center;
+    }
+    
+    .route i{
+        font-size: 25px;
+        padding: 5px 0 0 8px;
+        font-weight: 100;
+    }
+
+    .route h2{
+        display: none;
+    }
+
+    #mainBody{
+        width: calc(100% - 90px);
+    
+        border: none;
+        padding-top: 30px;
+        position: absolute;
+        top: 100px;
+        right: 15px;
+    }
 }
