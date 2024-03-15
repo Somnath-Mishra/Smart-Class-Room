@@ -5,8 +5,10 @@ const mailSender = async (email, title, body) => {
     // Create a Transporter to send emails
     let transporter = nodemailer.createTransport({
       host: process.env.MAIL_HOST,
-      port:465,
-      secure:true,
+
+
+      port:587,
+
       auth: {
         user: process.env.MAIL_USER,
         pass: process.env.MAIL_PASS,
@@ -14,10 +16,10 @@ const mailSender = async (email, title, body) => {
     });
     // Send emails to users
     let info = await transporter.sendMail({
-      from: 'www.sandeepdev.me - Sandeep Singh',
+      from: 'chatterjee.swastik022@gmail.com',
       to: email,
       subject: title,
-      html: body,
+      text: body,
     });
     console.log("Email info: ", info);
     return info;

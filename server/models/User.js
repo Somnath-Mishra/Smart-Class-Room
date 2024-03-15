@@ -51,6 +51,7 @@ const userSchema = new mongoose.Schema({
     {
       solvedQuestion: [
         {
+
           type: String,
           reuired: true,
         },
@@ -61,8 +62,7 @@ const userSchema = new mongoose.Schema({
         },
       ],
     },
-  ],
+  ]
 });
-
 module.exports = mongoose.model("User", userSchema);
 

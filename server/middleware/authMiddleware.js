@@ -6,10 +6,8 @@ const User = require("../models/User");
 const auth = async (req, res, next) => {
     try{
         //extract token
-        const token = req.cookies.token 
-                        || req.body.token 
-                        || req.header("Authorisation").replace("Bearer ", "");
-
+      const token = req.body.token||req.header("Authorization").replace("Bearer ", "");
+      //const token=req.body.token 
         //if token missing, then return response
         if(!token) {
             return res.status(401).json({
@@ -34,6 +32,7 @@ const auth = async (req, res, next) => {
         next();
     }
     catch(error) {  
+        console.log(error);
         return res.status(401).json({
             success:false,
             message:'Something went wrong while validating the token',
@@ -100,4 +99,4 @@ const isAdmin = async (req, res, next) => {
     }
    }
 
-   module.exports={auth,isStudent,isTeacher,isAdmin}
+   module.exports={auth,isTeacher,isStudent,isAdmin}

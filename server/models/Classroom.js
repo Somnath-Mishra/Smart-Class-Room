@@ -10,24 +10,26 @@ const courseSchema = new mongoose.Schema({
     instructor: {
         type:mongoose.Schema.Types.ObjectId,
         ref:"User",
-        required:true,
+    
     },
+
     whatYouWillLearn: {
         type:String,
     },
-    courseContent: [
-        {
-            type:mongoose.Schema.Types.ObjectId,
-            ref:"Section",
-        }
-    ],
-    
-
-    studentsEnrolled: [{
+     studentsEnrolled: [{
         type:mongoose.Schema.Types.ObjectId,
-        required:true,
         ref:"User",
     }]
+    ,
+    assignments:[{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:"Assignment"
+    }]
+
+
+},
+{
+    timestamps:true,
 });
 
-module.exports = mongoose.model("Course", courseSchema);
+module.exports = mongoose.model("Classroom", courseSchema);

@@ -3,9 +3,9 @@ const User = require ("../models/User");
 const jwt = require("jsonwebtoken");
 const asyncHandler=require('express-async-handler');
 const OTP=require('../models/OTP')
-const registerStudent = asyncHandler(async (req,res)=>
+const registerUser = asyncHandler(async (req,res)=>
 {
-    const { firstName ,lastName,email,password,accountType,otp}=req.body;
+    const { firstName ,lastName,email,password,accountType}=req.body;
 
     if(!firstName || !email || !password){
         res.status(400);
@@ -24,17 +24,8 @@ const registerStudent = asyncHandler(async (req,res)=>
 
     //res.json({message: "Register the user"});
 
-    try{ const recentOtp = await OTP.find({email}).sort({createdAt:-1}).limit(1);
-    console.log(recentOtp);
-    if(recentOtp!==otp){
-        throw new Error("OTP is Incorrect");
-    }
-   }
-   catch(err){
-    res.status(404).json(err);
-
-   }
-    
+   
+ 
    
     const newUser = new User({
         firstName,
@@ -56,7 +47,7 @@ catch(err){
 }
 });
 
-const loginStdent = async (req, res) => {
+const loginUser = async (req, res) => {
     try {
         //get data from req body
         const {email, password} = req.body;
@@ -85,7 +76,7 @@ const loginStdent = async (req, res) => {
                 accountType:user.accountType,
             }
             const token = jwt.sign(payload, process.env.JWT_SECRET, {
-                expiresIn:"2h",
+                expiresIn:"10h",
             });
             user.token = token;
             user.password= undefined;
@@ -130,4 +121,4 @@ const changePassword = async (req, res) => {
     //send mail - Password updated
     //return response
 }
-module.exports={registerStudent,loginStdent,changePassword};
+module.exports={registerUser,loginUser,changePassword};
