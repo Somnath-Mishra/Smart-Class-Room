@@ -1,6 +1,7 @@
 import React from 'react'
 import './schedule.css'
 
+
 function Card({subject, teacher, startTime, endTime, btnColor}) {
   return (
     <div className="card" style={{background: btnColor}}>
