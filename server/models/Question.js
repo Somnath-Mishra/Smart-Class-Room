@@ -33,6 +33,34 @@ const questionSchema = new mongoose.Schema({
     required: true,
     trim: true,
   },
+  optionA :{
+    type:String,
+    required :true,
+    trim : true
+    
+  },
+  optionB :{
+    type:String,
+    required :true,
+    trim : true
+
+  },
+  optionC :{
+    type:String,
+    required :true,
+    trim : true
+
+  },
+  optionD :{
+    type:String,
+    required :true,
+    trim : true
+
+  },
+  correctOption:{
+    enum:['a','b','c','d'],
+    required : true
+  }
 });
 
 const Question = mongoose.model("Question", questionSchema);
