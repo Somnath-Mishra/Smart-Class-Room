@@ -16,6 +16,18 @@ const questionSchema = new mongoose.Schema({
     required: true,
     trim: true,
   },
+
+  options:{
+    type:Array,
+    required:true
+
+  },
+  correctAns:{
+    type:String,
+    required:true,
+  },
+
+
   ans: {
     type: String,
     required: true,

@@ -28,19 +28,12 @@ const mongoose = require("mongoose");
 const sampleQuestions = require("./sampleQuestion.js");
 
 connectDb("Question");
-//connectDb(
-//  databaseName
-//);
 
-//app.get("/api/contacts",(req,res)=>{
-
-//  res.status(200).json({message:"Get all contacts"});
-//})
 
 cloudinaryConnect();
 
-//app.use("/SmartLab/users", require("./routes/auth"));
-//app.use("/SmartLab/teachers", require("./routes/teacherRoutes"));
+
+
 
 //app.use(errorHandler);
 
@@ -51,10 +44,12 @@ app.use(express.json());
 const quizRoute = require("./routes/quizRoutes.js");
 const chatRoute = require("./routes/chatRoute.js");
 
-//app.use ("/api/contacts",require("./routes/contactRoute"));
+
 //app.use("/SmartLab/users", connectCustomizeDatabase('Student'), require("./routes/StudentRoute"));
+app.use("/api/teachers", require("./routes/teacherRoutes"));
 app.use("/api/quiz", quizRoute);
 app.use("/api/chat", chatRoute);
+app.use("/api/users", require("./routes/auth"));
 //app.use(errorHandler);
 
 /*
