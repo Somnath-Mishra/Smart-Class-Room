@@ -106,7 +106,7 @@ function Frame() {
         <div id="mainBody">
             <Outlet />
         </div>
-    </div>
+    </div>cd
     </>
   )
 }

@@ -29,13 +29,16 @@ function Blogs() {
 
   useEffect(() => {
     fetch('http://localhost:5001/api/blog')
-      // .then((res) => res.json())
-      .then((res) => {
-        console.log(res)
+      .then((res) => res.json())
+      .then((data) => {
+        setBlogData(data[blogData]);
       })
+      .catch((error) => {
+        console.error('Error fetching blog data:', error);
+      });
   }, []);
 
-  // console.log(blogData);
+  console.log(blogData);
 
   return (
     <div id="blog-wraper">
