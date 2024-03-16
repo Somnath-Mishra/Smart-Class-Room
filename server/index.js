@@ -50,19 +50,29 @@ app.use(express.json());
 //All routes
 const quizRoute = require("./routes/quizRoutes.js");
 const chatRoute = require("./routes/chatRoute.js");
+const performanceRoute = require("./routes/performance.js");
+const sampleStudents = require("./sampleUser.js");
+const User = require("./models/User.js");
 
 //app.use ("/api/contacts",require("./routes/contactRoute"));
 //app.use("/SmartLab/users", connectCustomizeDatabase('Student'), require("./routes/StudentRoute"));
 app.use("/api/quiz", quizRoute);
+app.use("/api/performance", performanceRoute);
 app.use("/api/chat", chatRoute);
 //app.use(errorHandler);
 
-/*
-app.get("/insertSampleQuestions", async (req, res) => {
+app.get("/insertSampleInDatabase", async (req, res) => {
+  /*
   try {
+    
     for (const questionData of sampleQuestions) {
       const question = new Question(questionData);
       await question.save();
+    }
+    
+    for (const user of sampleStudents) {
+      const userData = new User(user);
+      await userData.save();
     }
     console.log("Sample questions inserted successfully.");
     res.status(200).send("Sample questions inserted successfully.");
@@ -70,8 +80,8 @@ app.get("/insertSampleQuestions", async (req, res) => {
     console.error("Error inserting sample questions:", error);
     res.status(500).send("Error inserting sample questions.");
   }
+  */
 });
-*/
 app.listen(port, () => {
   console.log(`server running at port, ${port} https://localhost:${port}`);
 });
