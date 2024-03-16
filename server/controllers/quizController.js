@@ -3,7 +3,7 @@ const User = require("../models/User");
 
 // Fisher-Yates algorithm to shuffle array element with truly random distribution
 function shuffleQuestions(questions) {
-  for (let i = questions.lenght - 1; i > 0; i--) {
+  for (let i = questions.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
     const temp = questions[i];
     questions[i] = questions[j];
@@ -97,7 +97,7 @@ async function createCustomizeQuiz(req, res) {
     return res.status(200).json(questions);
   } catch (error) {
     console.error("Error generating createCustomizeQuiz ", error);
-    return res.status(500).json({
+     return res.status(500).json({
       error: "Internal Server Error",
     });
   }

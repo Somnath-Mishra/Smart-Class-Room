@@ -17,7 +17,9 @@ const {createAssignment}=require('../Controllers/assignmentController');
 
 
 // Importing Middlewares
-const { auth, isTeacher, isStudent, isAdmin } = require("../middleware/authMiddleware")
+const { auth, isTeacher, isStudent, isAdmin } = require("../middleware/authMiddleware");
+const { createQuestion } = require("../controllers/questioncontroller.");
+const { createSubject } = require("../controllers/subjectController");
 
 
 
@@ -25,6 +27,8 @@ const { auth, isTeacher, isStudent, isAdmin } = require("../middleware/authMiddl
 router.post("/createClass", auth, isTeacher, createClass)
 router.post("/create-assignment",auth,isTeacher,upload.single('file'),createAssignment)
 router.post("/addStudent",auth,isTeacher,addStudent);
+router.post("/create-question",auth,isTeacher,createQuestion)
+router.post("/add-subject",createSubject)
 
 
 
