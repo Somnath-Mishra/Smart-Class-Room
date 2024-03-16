@@ -10,7 +10,7 @@ function Frame() {
         <div id="topbarWraper">
             <div id="topbar">
                 <div id="brand">
-                    <img src="./OutShineLogo.png" alt="OutShineLogo" />
+                    <img src="https://cdn-icons-png.flaticon.com/128/8224/8224757.png" alt="OutShineLogo" />
                     <h1>OutShine</h1>
                 </div>
                 <div id="profile">
