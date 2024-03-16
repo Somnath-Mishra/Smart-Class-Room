@@ -25,12 +25,12 @@ const Register = () => {
       const lastName = e.target[1].value;
       const email = e.target[2].value;
       const password = e.target[3].value;
-      const confermPassword = e.target[4].value;
+      const confirmPassword = e.target[4].value;
       const accountType = e.target[5].value;
       //const file=e.target[3].files[0];
 
-      if(password != confermPassword)
-        throw new Error(`Password is not matching`);
+      if(password != confirmPassword)
+       throw new Error(`Password is not matching`);
 
       setInputdata({
         firstName: firstName,
@@ -70,12 +70,12 @@ const Register = () => {
             <input type="text" className="text" placeholder="Last Name" />
             <input type="email" className="text" placeholder="email" />
             <input type="password" className="text" placeholder="password" />
-            <input type="password" className="text" placeholder="Conferm password" />
+            <input type="password" className="text" placeholder="Confirm password" />
             <input type="text" className="text" placeholder="AccountType" />
 
             <button>Sign up</button>
 
-            {err && <span>{err}</span>}
+            {err && <span></span>}
           </form>
           <p>You do have an account ? </p>
         </div>

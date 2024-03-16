@@ -10,6 +10,11 @@ const subjectSchema = new mongoose.Schema({
     trim: true,
     unique: true,
   },
+  topics:{
+    type:Array,
+    required:true
+  },
+  
   assignments: [assignmentSchema],
   quizzes: [quizSchema]
 });
