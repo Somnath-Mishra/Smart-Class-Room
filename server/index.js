@@ -42,6 +42,7 @@ app.use(express.json());
 //All routes
 const quizRoute = require("./routes/quizRoutes.js");
 const chatRoute = require("./routes/chatRoute.js");
+const tagsRoute = require("./routes/tagsRoute.js");
 const performanceRoute = require("./routes/performance.js");
 const sampleStudents = require("./sampleUser.js");
 const User = require("./models/User.js");
@@ -52,6 +53,7 @@ const blogRoute = require("./routes/blogRoute.js");
 //app.use("/SmartLab/users", connectCustomizeDatabase('Student'), require("./routes/StudentRoute"));
 //app.use("/api/teachers", require("./routes/teacherRoutes"));
 app.use("/api/quiz", quizRoute);
+app.use("/api/getAllTags", tagsRoute);
 
 app.use("/api/performance", performanceRoute);
 

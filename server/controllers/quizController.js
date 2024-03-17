@@ -62,17 +62,6 @@ async function filterQuestionNotSolvedByUser(questions, userId) {
 
 async function createCustomizeQuiz(req, res) {
   try {
-    //const subjectName = req.body.subjectName;
-    const subject = req.body.chapterName;
-    const topicName = req.body.topicTag;
-
-    let questions = await Question.find({
-      chapterName: { $in: subject },
-    });
-
-    questions.push(
-      await Question.find({
-        topicTag: { $in: topicTag },
     const chapterName = req.body.chapterName;
     const topicName = req.body.topicName;
     const userId = req.body.userId;
@@ -86,7 +75,6 @@ async function createCustomizeQuiz(req, res) {
           chapterName: { $in: chapter },
         });
         questions.push(...tempQuestions);
-
       }),
     );
 
@@ -109,7 +97,7 @@ async function createCustomizeQuiz(req, res) {
     return res.status(200).json(questions);
   } catch (error) {
     console.error("Error generating createCustomizeQuiz ", error);
-     return res.status(500).json({
+    return res.status(500).json({
       error: "Internal Server Error",
     });
   }
@@ -117,7 +105,7 @@ async function createCustomizeQuiz(req, res) {
 
 async function createMultiplayerQuiz(req, res) {
   try {
-    const { subject, topicName} = req.body;
+    const { subject, topicName } = req.body;
     let questions = await Question.find({
       subject: { $in: subject },
     });
@@ -140,4 +128,4 @@ async function createMultiplayerQuiz(req, res) {
 }
 
 module.exports = { createCustomizeQuiz, createMultiplayerQuiz };
- 
+
