@@ -5,7 +5,7 @@ const {
 
 const router = require("express").Router();
 
-router.post("/practice", createCustomizeQuiz);
-router.post("/create", createMultiplayerQuiz);
+router.get("/practice", createCustomizeQuiz);
+router.get("/create", createMultiplayerQuiz);
 
 module.exports = router;
