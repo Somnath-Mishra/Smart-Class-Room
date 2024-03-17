@@ -50,7 +50,7 @@ const getTopics=async(req,res)=>{
    }
 
    catch(err){
-     console.log(err.message);
+     console.log(req.body);
      res.status(500).json({
         message:"Unable to get the topics"
      })

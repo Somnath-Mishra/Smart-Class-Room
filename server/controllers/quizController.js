@@ -19,16 +19,16 @@ function uniqueArrayList(array) {
 async function createCustomizeQuiz(req, res) {
   try {
     //const subjectName = req.body.subjectName;
-    const chapterName = req.body.chapterName;
-    const topicName = req.body.topicName;
+    const subject = req.body.chapterName;
+    const topicName = req.body.topicTag;
 
     let questions = await Question.find({
-      chapterName: { $in: chapterName },
+      chapterName: { $in: subject },
     });
 
     questions.push(
       await Question.find({
-        topicTag: { $in: topicName },
+        topicTag: { $in: topicTag },
       }),
     );
     questions = shuffleQuestions(uniqueArrayList(questions));
@@ -48,9 +48,9 @@ async function createCustomizeQuiz(req, res) {
 
 async function createMultiplayerQuiz(req, res) {
   try {
-    const { chapterName, topicName, numberQuestion, timeLimit } = req.body;
+    const { subject, topicName} = req.body;
     let questions = await Question.find({
-      chapterName: { $in: chapterName },
+      subject: { $in: subject },
     });
 
     questions.push(
@@ -71,3 +71,4 @@ async function createMultiplayerQuiz(req, res) {
 }
 
 module.exports = { createCustomizeQuiz, createMultiplayerQuiz };
+ 

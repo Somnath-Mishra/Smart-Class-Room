@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-//import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import "./Style/register.scss";
 import axios from "axios";
+//import { Link } from "react-router-dom";
 
 const Register = () => {
   const data = {
@@ -15,7 +16,7 @@ const Register = () => {
 
   const [err, setErr] = useState({});
   const [inputdata, setInputdata] = useState(data);
-  //const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const handleSumbit = async (e) => {
     e.preventDefault();
@@ -43,9 +44,11 @@ const Register = () => {
 
       try {
         await axios
-          .post("http://localhost:8000/SmartLab/users/register", inputdata)
+          .post("http://localhost:8000/api/users/register", inputdata)
           .then((res) => {
             console.log(res);
+            navigate("/login")
+         
           });
       } catch (err) {
         console.log(err.response);
@@ -77,7 +80,7 @@ const Register = () => {
 
             {err && <span></span>}
           </form>
-          <p>You do have an account ? </p>
+          <p>You do have an account ? <Link to="/login">Login</Link></p>
         </div>
       </div>
     </>

@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import './Questions.scss'
 import { QuestionContext } from "../../context/QuestionContext";
+import axios from "axios";
 
 
 const Questions = () => {
@@ -9,8 +10,7 @@ const Questions = () => {
     let [cnt, setCnt] = useState(0);
     const [selectedOption, setSelectedOption] = useState("");
     const [timer, setTimer] = useState(0);
-    const minutes = Math.floor(time / 60);
-    const seconds = timer % 60;
+
     let data = [{
 
         body: "ABCD"
@@ -30,14 +30,16 @@ const Questions = () => {
 
 
 
-    useEffect(() => {
+    useEffect( () => {
 
-        const content = () => {
+        const content = async() => {
       
 
         
          
-          
+         await axios.post("http://localhost:8000/api/quiz",{
+            
+         })
 
             setCnt(0);
 
@@ -60,7 +62,7 @@ const Questions = () => {
     }, []);
 
     useEffect(() => {
-        if (timer < time) { // 15 minutes = 900 seconds
+        if (timer < time*60) { 
           const interval = setInterval(() => {
             setTimer(prevTime => prevTime + 1); // Increment time by 1 second
           }, 1000);
@@ -77,6 +79,7 @@ const Questions = () => {
         setCnt(cnt + 1)
 
         setBody(data[cnt].body)
+        setSelectedOption("")
     }
 
     const handleOptionChange = (event) => {
@@ -91,8 +94,7 @@ const Questions = () => {
 
             <div className="question">
                 
-            <div className="time"><p>{`${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`}</p></div>
-
+            <div className="time"><p>{`${Math.floor(timer/60).toString().padStart(2, '0')}:${(timer%60).toString().padStart(2, '0')}`}</p></div>
                 <form onSubmit={handleSubmit}>
                     <span className="header">
                         <h2> {subject} Question {cnt}</h2>

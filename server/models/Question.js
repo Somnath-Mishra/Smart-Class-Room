@@ -6,7 +6,7 @@ const questionSchema = new mongoose.Schema({
     required: true,
     trim: true,
   },
-  chapterName: {
+  subject: {
     type: Array,
     required: true,
     trim: true,
