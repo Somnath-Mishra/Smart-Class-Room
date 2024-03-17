@@ -11,6 +11,12 @@ const questionSchema = new mongoose.Schema({
     required: true,
     trim: true,
   },
+  chapterName:{
+    type:Array,
+    required:true,
+    trim:true,
+
+  },
   topicTag: {
     type: Array,
     required: true,
