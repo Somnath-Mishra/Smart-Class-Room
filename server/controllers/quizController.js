@@ -62,6 +62,17 @@ async function filterQuestionNotSolvedByUser(questions, userId) {
 
 async function createCustomizeQuiz(req, res) {
   try {
+    //const subjectName = req.body.subjectName;
+    const subject = req.body.chapterName;
+    const topicName = req.body.topicTag;
+
+    let questions = await Question.find({
+      chapterName: { $in: subject },
+    });
+
+    questions.push(
+      await Question.find({
+        topicTag: { $in: topicTag },
     const chapterName = req.body.chapterName;
     const topicName = req.body.topicName;
     const userId = req.body.userId;
@@ -75,6 +86,7 @@ async function createCustomizeQuiz(req, res) {
           chapterName: { $in: chapter },
         });
         questions.push(...tempQuestions);
+
       }),
     );
 
@@ -105,9 +117,9 @@ async function createCustomizeQuiz(req, res) {
 
 async function createMultiplayerQuiz(req, res) {
   try {
-    const { chapterName, topicName, numberQuestion, timeLimit } = req.body;
+    const { subject, topicName} = req.body;
     let questions = await Question.find({
-      chapterName: { $in: chapterName },
+      subject: { $in: subject },
     });
 
     questions.push(
@@ -128,3 +140,4 @@ async function createMultiplayerQuiz(req, res) {
 }
 
 module.exports = { createCustomizeQuiz, createMultiplayerQuiz };
+ 

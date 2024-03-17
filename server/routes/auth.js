@@ -19,7 +19,8 @@ router.route("/register").post(registerUser);
 router.route("/verification").post(sendOTP);
 router.route("/login").post(loginUser);
 router.route("/change-password").post(resetPassword);
-router.get("/gettopics", getTopics);
+
+router.post("/gettopics",getTopics)
 
 // Get Details for a Specific Courses
 //router.post("/getCourseDetails", getCourseDetails)
