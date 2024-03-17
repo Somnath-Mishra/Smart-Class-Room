@@ -1,3 +1,4 @@
+
 import React, { useState ,useContext, useEffect} from 'react'
 import './quiz.css'
 import { Link } from 'react-router-dom'
@@ -86,14 +87,14 @@ function Quiz() {
   
   // useEffect(()=>{
   //   const preset= async ()=>{
-   console.log(subject)
-  //   //  try{ 
+  console.log(subject);
+  //   //  try{
   //   //    axios.get("http://localhost:8000/api/users/gettopics",{
   //   //     subject:subject
   //   //   }).then((res)=>{
   //   //     console.log(res)
   //   //   })
-     
+
   //   //   console.log(response)
 
   //   // }
@@ -107,9 +108,8 @@ function Quiz() {
   //   )
   // },[subject])
 
-
-
   return (
+
     
     <div className='wraper'    >
   
@@ -121,8 +121,7 @@ function Quiz() {
         <p><Link to="/Questions"> Let's Start </Link></p>
         
     </div>
-    
-  )
+  );
 }
 
-export default Quiz
+export default Quiz;

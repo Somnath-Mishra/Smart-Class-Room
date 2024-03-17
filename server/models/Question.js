@@ -17,21 +17,35 @@ const questionSchema = new mongoose.Schema({
     trim: true,
   },
 
-  options:{
-    type:Array,
-    required:true
-
-  },
-  correctAns:{
-    type:String,
-    required:true,
-  },
-
-
   ans: {
     type: String,
     required: true,
     trim: true,
+  },
+  optionA: {
+    type: String,
+    required: true,
+    trim: true,
+  },
+  optionB: {
+    type: String,
+    required: true,
+    trim: true,
+  },
+  optionC: {
+    type: String,
+    required: true,
+    trim: true,
+  },
+  optionD: {
+    type: String,
+    required: true,
+    trim: true,
+  },
+  correctOption: {
+    type: String,
+    enum: ["a", "b", "c", "d"],
+    required: true,
   },
 });
 
