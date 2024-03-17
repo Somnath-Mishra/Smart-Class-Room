@@ -1,5 +1,5 @@
 import React from 'react'
-import { useState, useEffect } from 'react';
+// import { useState, useEffect } from 'react';
 import './blogs.css'
 
 function Card({ tag, title, message }) {
@@ -25,20 +25,14 @@ function Card({ tag, title, message }) {
 
 function Blogs() {
 
-  const [blogData, setBlogData] = useState([]);
 
-  useEffect(() => {
-    fetch('http://localhost:5001/api/blog')
-      .then((res) => res.json())
-      .then((data) => {
-        setBlogData(data[blogData]);
-      })
-      .catch((error) => {
-        console.error('Error fetching blog data:', error);
-      });
-  }, []);
 
-  console.log(blogData);
+  const cards = [];
+  const mess = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque quod adipisci consectetur ducimus explicabo accusantium soluta atque eveniet molestias cupiditate in sequi nobis, fugit facilis voluptatum veritatis ab architecto sint illo! Qui, quae tenetur odio esse velit odit quis in obcaecati debitis, ipsa quia saepe aliquid magnam sint voluptatem doloremque"
+
+  for(let i = 0; i < 10; i++) {
+    cards.push(<Card tag={"Productivity"} title={"Boost Productivity by Time Management"} message={mess} />)
+  }
 
   return (
     <div id="blog-wraper">
@@ -48,9 +42,7 @@ function Blogs() {
         </div>
         <div className="blog-container">
 
-          {blogData.map((blog, index) => (
-            <Card key={index} tag={blog.tag} title={blog.title} message={blog.message} />
-          ))}
+          {cards}
 
         </div>
       </div>
