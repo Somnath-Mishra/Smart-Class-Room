@@ -43,6 +43,11 @@
     color: black;
 }
 
+#brand h1{
+    font-size: larger;
+    font-weight: 900;
+}
+
 #brand img{
     height: 50px;
     margin-right: 10px;
@@ -102,7 +107,7 @@
     width: 100%;
     border-radius: 10px;
     padding-left: 15px;
-    padding-top: 5px;
+    padding-top: 0px;
 }
 
 .route{
