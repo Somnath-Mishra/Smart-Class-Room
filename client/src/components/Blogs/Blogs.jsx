@@ -26,7 +26,8 @@ function Card({ tag, title, message }) {
 
 function Blogs() {
 
-  const [blogData, setBlogData] = useState({});
+
+  const [blogData, setBlogData] = useState([]);
 
   // useEffect(() => {
   //   fetch('http://localhost:5001/api/blog')
@@ -51,6 +52,9 @@ function Blogs() {
 
   // console.log(blogData);
 
+
+ 
+
   return (
     <div id="blog-wraper">
       <div id="blog">
@@ -58,6 +62,7 @@ function Blogs() {
           <h1>Get Some Tips And Tricks</h1>
         </div>
         <div className="blog-container">
+
 
           {/* {blogData.map((blog, index) => (
             <Card key={index} tag={blog.tag} title={blog.title} message={blog.message} />

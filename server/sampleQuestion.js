@@ -16,6 +16,7 @@ let sampleQuestions = [
       "What is a binary search tree (BST)? Explain its operations and complexity.",
     chapterName: ["Data Structures", "Trees"],
     topicTag: ["Binary Search Tree", "Operations", "Complexity"],
+
     ans: "A binary search tree (BST) is a binary tree in which each node has at most two children, with the left child containing values less than the parent node and the right child containing values greater than the parent node. Operations include insertion, deletion, and search, with time complexity of O(log n) for balanced trees.",
     optionA: " BST: Linear structure, inefficient for searches",
     optionB : "BST: Hierarchical structure, O(log n) complexity for balanced trees",

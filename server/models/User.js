@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const { questionSchema } = require("./Question");
 
 const userSchema = new mongoose.Schema({
   firstName: {
@@ -38,6 +39,7 @@ const userSchema = new mongoose.Schema({
   token: {
     type: String,
   },
+  
   resetPasswordExpires: {
     type: Date,
   },
@@ -51,9 +53,20 @@ const userSchema = new mongoose.Schema({
     {
       solvedQuestion: [
         {
-
-          type: String,
-          reuired: true,
+          questionId: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Question",
+          },
+          attemptStatus: {
+            type: String,
+            enum: ["Correct", "Incorrect"],
+            required: true,
+          },
+          frequency: {
+            type: Number,
+            required: true,
+            default: 0,
+          },
         },
       ],
       attendance: [
@@ -62,7 +75,6 @@ const userSchema = new mongoose.Schema({
         },
       ],
     },
-  ]
+  ],
 });
 module.exports = mongoose.model("User", userSchema);
-

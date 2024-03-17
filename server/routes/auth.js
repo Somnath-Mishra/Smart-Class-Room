@@ -1,10 +1,11 @@
 const express = require("express");
 
 
-const {registerUser,loginUser} = require("../Controllers/studentController");
+const {registerUser,loginUser} = require("../controllers/studentController");
 const {sendOTP}=require("../Controllers/OTPController")
 const {resetPasswordToken,resetPassword}=require('../Controllers/resetPassword')
 const {createClass,showAllClasses,getClassDetails} = require("../Controllers/classRoomController");
+const { getTopics } = require("../controllers/subjectController");
 const router=express.Router();
 
 
@@ -14,12 +15,11 @@ router.route("/register").post(registerUser);
 router.route("/verification").post(sendOTP);
 router.route("/login").post(loginUser);
 router.route("/change-password").post(resetPassword);
+router.get("/gettopics",getTopics)
 
 // Get Details for a Specific Courses
 //router.post("/getCourseDetails", getCourseDetails)
 
-router.route("/allclasses").get(showAllClasses);
-router.route("/getclassdeatils").get(getClassDetails);
 
 
 module.exports=router;
