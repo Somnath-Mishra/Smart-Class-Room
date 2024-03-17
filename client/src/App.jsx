@@ -18,7 +18,11 @@ import {
   createRoutesFromElements,
 } from "react-router-dom";
 import Questions from "./components/Question/Question";
+
+import QuizTest from "./components/Quiz/QuizTest";
+
 import ChatBot from "./components/ChatBot/ChatBot";
+
 
 const App = () => {
   const { user } = useContext(AuthContext);
@@ -27,6 +31,8 @@ const App = () => {
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route path="/" element={<Frame />}>
+
+        <Route path="quizTest" element={<QuizTest />} />
         
         <Route path="chatBot" element={<ChatBot />} />
         <Route path="login" element={<Login />} />
@@ -39,8 +45,8 @@ const App = () => {
         <Route path="dashboard" element={<Dashboard />} />
         <Route path="/questions" element={<Questions />} />
 
-      </Route>
-    )
+      </Route>,
+    ),
   );
 
   return (
