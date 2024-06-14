@@ -12,5 +12,11 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
+    - name: Log in to Docker Hub
+      run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login --username ${{ secrets.DOCKER_USERNAME }} --password-stdin
+
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag smart-class-room:$(date +%s)
+      run: docker build . --file Dockerfile --tag somnathmishra01/smart-class-room:$(date +%s)
+
+    - name: Push the Docker image
+      run: docker push somnathmishra/smart-class-room:$(date +%s)
